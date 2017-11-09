@@ -11,7 +11,7 @@ namespace RetroRabbit
     {
 
         //out list fot the individual strings in the csv
-        private static List<string> rabitlist = new List<string>();
+        private static readonly List<string> Rabitlist = new List<string>();
         
         //Generate RabitList of strings for the search
         public void GenerateList(string location)
@@ -47,7 +47,7 @@ namespace RetroRabbit
                 {
                     var record = value;
                     var delimiter = ",";
-                    var newRecord = string.Format("{0}", record);
+                    var newRecord = $"{record}";
                     csv.AppendLine(string.Concat(newRecord, delimiter));
 
                 }
@@ -71,20 +71,19 @@ namespace RetroRabbit
         //Lets get the generated text file and split it to a list
         public List<string> SplitFile(string location)
         {
-            string line;
             try
             {
                 using (var sr = new StreamReader(location))
                 {
                     while (!sr.EndOfStream)
                     {
-                        line = sr.ReadLine();
+                        var line = sr.ReadLine();
                         if (line != null)
                             foreach (var s in line.Split(','))
                             {
                                 if (!string.IsNullOrEmpty(s))
                                 {
-                                    rabitlist.Add(s);
+                                    Rabitlist.Add(s);
                                 }
                             }
                         // Console.WriteLine(line);
@@ -98,7 +97,7 @@ namespace RetroRabbit
             }
 
 
-            return rabitlist;
+            return Rabitlist;
         }
 
         //we have a list with values in csv now lets find a match
@@ -106,7 +105,7 @@ namespace RetroRabbit
         {
             try
             {
-               
+               //lets loop the list
                 foreach (string x in seperatedlist)
                 {
 

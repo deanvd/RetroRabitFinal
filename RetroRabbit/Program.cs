@@ -11,7 +11,7 @@ namespace RetroRabbit
         private static readonly string Location = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\RetroRabitDictResult.txt";
         static void Main()
         {
-            //Instansiate the helper class
+            //Lets instantiate our helper class
             var csHelper = new Helper();
             //Lets generate a list with values for the search
             csHelper.GenerateList(Location);
@@ -20,7 +20,7 @@ namespace RetroRabbit
             {
                 csHelper.RabbitImage();
             }
-            //If we fail to find a match5
+            //If we fail to find a match lets give the user a message
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
